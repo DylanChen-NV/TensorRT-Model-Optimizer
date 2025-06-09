@@ -173,6 +173,13 @@ def get_model(
                 ckpt_path, device_map=device_map, **model_kwargs
             )
             model = hf_llava.language_model
+        elif hf_config.model_type == "qwen2_5_vl":
+            from transformers import Qwen2_5_VLForConditionalGeneration
+            model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+                ckpt_path,
+                device_map=device_map,
+                **model_kwargs
+            )
         elif hf_config.model_type == "t5":
             from transformers import AutoModelForSeq2SeqLM
 
